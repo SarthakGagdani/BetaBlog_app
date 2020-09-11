@@ -1,0 +1,31 @@
+<h1>All Articles </h1>
+<%= link_to 'Go to Home page', root_path %> <br/><br/>
+
+
+<table>
+<tr>
+<th>Sr. No</th>
+<th>Title</th>
+<th>Description</th>
+<th colspan='3'>Actions</th>
+</tr>
+
+<% count=1%><% @articles.each do |article| %>
+<tr>
+<td><%= count%></td>
+<td><%= article.title%></td>
+<td><%= article.description%></td>
+<td><%= link_to 'Show', article_path(article),method: :get %></td>
+<td><%= link_to 'Edit',article_path(article)+'/edit' ,method: :get%></td>
+
+<td><%= link_to 'Delete', article_path(article),method: :delete, data:{confirm:"Are you sure?"} %></td>
+
+
+</tr>
+
+<% count+=1 end%>
+
+</table>
+<br/>
+
+<%= link_to  'Create New Article',new_article_path %>
